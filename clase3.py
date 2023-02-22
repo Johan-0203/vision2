@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-LR = 0.00005
+LR = 0.00002
 EPOCHS = 20
 
 dt = np.loadtxt('train.csv', delimiter=";")
@@ -13,6 +13,7 @@ y = dt[:,1,None]
 x = (x-np.mean(x))/np.std(x)
 y = (y-np.mean(y))/np.std(y)
 
+plt.plot(x,y,"o")
 # Columna de 1 a X
 m = x.shape[0]
 x_0 = np.ones((m,1))
@@ -37,7 +38,6 @@ for i in range(EPOCHS):
     theta[1] -= LR * dpar1
 
     plt.plot(x[:,1], y_pred)
-
 
 print(theta[0],theta[1])
 plt.xlabel('Area',color='b')
